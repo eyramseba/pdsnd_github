@@ -24,5 +24,5 @@ The script also will prompt the user whether they would like want to see the raw
 - washington.csv
 
 ### Credits
-Udacity Explore US Bikeshare Data project
-Mentor review
+* Udacity Explore US Bikeshare Data project
+* Mentor review
