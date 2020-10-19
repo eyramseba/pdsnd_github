@@ -16,7 +16,7 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city_list = ["chicago","new york city", "washington"]
     while True:
@@ -27,7 +27,7 @@ def get_filters():
         else:
             print('You will see data for {}'.format(city))
             break
-    
+
     # TO DO: get user input for month (all, january, february, ... , june)
     month_list = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
     while True:
@@ -65,7 +65,7 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    
+
     # load data file into a dataframe
     df = pd.read_csv(CITY_DATA[city])
 
@@ -76,10 +76,10 @@ def load_data(city, month, day):
     # extract month, day of week and hour from Start Time to create new columns
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
-    
+
     #TO DO: extract hour from Start Time to create new columns
     df['hour'] = df['Start Time'].dt.hour
-    
+
     # filter by month if applicable
     if month != 'all':
     # use the index of the months list to get the corresponding int
@@ -110,7 +110,7 @@ def time_stats(df):
     # TO DO: display the most common day of week
     most_common_day = df['day_of_week'].mode()[0]
     print('The most common day of week is {}: '.format(most_common_day))
-          
+
     # TO DO: display the most common start hour
     most_common_hour = df['hour'].mode()[0]
     print('The most common start hour is {}: '.format(most_common_hour))
@@ -176,20 +176,20 @@ def user_stats(df):
         print('Number of Gender is {}: '.format(gender_count))
     except KeyError:
         print('Number of Gender is not available.')
-       
+
     # TO DO: Display earliest, most recent, and most common year of birth
     try:
         earliest_birth_year = df['Birth Year'].min()
         print('The earliest year of birth is {}: '.format(earliest_birth_year))
     except KeyError:
         print('Earliest Year of Birth  is not available.')
-          
+
     try:
         recent_birth_year = df['Birth Year'].max()
         print('The recent year of birth is {}: '.format(recent_birth_year))
     except KeyError:
         print('Recent Year of Birth is not available.')
-          
+
     try:
         common_birth_year = df['Birth Year'].mode()[0]
         print('The most common year of birth is {}: '.format(common_birth_year))
@@ -202,7 +202,7 @@ def user_stats(df):
 def raw_data(df):
     count = 0
     while True:
-        answer = str(input('Would you like to see 5 lines of raw data? Enter yes or no: '))
+        answer = str(input('\nWould you like to see 5 lines of raw data? Enter yes or no: \n'))
         # Check if response is yes, print the raw data and increment count by 5
         if answer.lower() == 'yes':
             print(df.iloc[count: count + 5])
@@ -210,7 +210,7 @@ def raw_data(df):
         # otherwise break
         else:
             break
-     
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -221,7 +221,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         raw_data(df)
-            
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
