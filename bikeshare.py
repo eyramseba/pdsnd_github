@@ -228,7 +228,9 @@ def raw_data(df):
 
 def main():
     while True:
-        city, month, day = get_filters()
+        city = get_city()
+        month = get_month()
+        day = get_day()
         df = load_data(city, month, day)
 
         time_stats(df)
