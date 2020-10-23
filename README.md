@@ -25,4 +25,5 @@ The script also will prompt the user whether they would like want to see the raw
 
 ### Credits
 * Udacity Explore US Bikeshare Data project
-* Mentor review
+* Udacity Mentor review
+* Udacity Programming for Data Science Nanodegree Program
