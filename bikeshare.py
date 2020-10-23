@@ -6,14 +6,12 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
-def get_filters():
+def get_city():
     """
-    Asks user to specify a city, month, and day to analyze.
+    Asks user to specify a city to analyze.
 
     Returns:
         (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
 
@@ -39,6 +37,15 @@ def get_filters():
             print('You will filter data by {}'.format(month))
             break
 
+def get_day():
+    """
+    Asks user to specify a day to analyze.
+
+    Returns:
+        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+    """
+    print('Hello! Let\'s explore some US bikeshare data!')
+
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     day_list = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     while True:
@@ -52,7 +59,6 @@ def get_filters():
 
     print('-'*40)
     return city, month, day
-
 
 def load_data(city, month, day):
     """
@@ -213,7 +219,9 @@ def raw_data(df):
 
 def main():
     while True:
-        city, month, day = get_filters()
+        city = get_city()
+        month = get_month()
+        day = get_day()
         df = load_data(city, month, day)
 
         time_stats(df)
